@@ -33,10 +33,10 @@ class Bgfx < Formula
     (buildpath/"bimg").install resource("bimg")
     
     if build.with? "debug"
-      args = "osx-debug64"
+      args = "osx-x64-debug"
       suffix = "Debug"
     else
-      args = "osx-release64"
+      args = "osx-x64-release"
       suffix = "Release"
     end
     
@@ -45,7 +45,7 @@ class Bgfx < Formula
       system "make",args
       
       
-      cd ".build/osx64_clang/bin" do
+      cd ".build/osx-x64/bin" do
         
         lib.mkpath
         #lib.install Dir["lib*"]
@@ -74,9 +74,9 @@ class Bgfx < Formula
     
     share.mkpath
     (share/"bgfx/examples").install Dir["bgfx/examples/*"]
-    (share/"bgfx/examples/runtime").install ("bgfx/.build/osx64_clang/bin/examples.app/Contents/MacOS/examples"+suffix) => "examples"
-    (share/"bgfx/examples/").install ("bgfx/.build/osx64_clang/bin/libexample-common"+suffix+".a") => "libexample-common.a"
-    (share/"bgfx/examples/").install ("bgfx/.build/osx64_clang/bin/libexample-glue"+suffix+".a") => "libexample-glue.a"
+    (share/"bgfx/examples/runtime").install ("bgfx/.build/osx-x64/bin/examples.app/Contents/MacOS/examples"+suffix) => "examples"
+    (share/"bgfx/examples/").install ("bgfx/.build/osx-x64/bin/libexample-common"+suffix+".a") => "libexample-common.a"
+    (share/"bgfx/examples/").install ("bgfx/.build/osx-x64/bin/libexample-glue"+suffix+".a") => "libexample-glue.a"
     
     (share/"bgfx/scripts").install Dir["bgfx/scripts/*"]
 
