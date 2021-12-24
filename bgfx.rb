@@ -32,7 +32,7 @@ class Bgfx < Formula
     (buildpath/"bx").install resource("bx")
     (buildpath/"bimg").install resource("bimg")
     
-    arch=`uname -m`
+    arch=`uname -m`.strip
     if build.with? "debug"
       args = "osx-#{arch}-debug"
       suffix = "Debug"
